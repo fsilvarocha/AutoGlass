@@ -26,7 +26,7 @@ public class Produto : IValidation, IInterface
     {
         _notifications = notifications;
     }
-    public void InactivateProduct() => Inativo = true;
+    public void InactivateProduct() => Ativo = false;
     public void SetProduct(int id, string? description,
                              DateTime manufacturing,
                              DateTime validate,
@@ -45,7 +45,7 @@ public class Produto : IValidation, IInterface
     public bool IsValid()
     {
         var contracts = new ContractValidations<Produto>()
-            .ValidManufactureIsOk(FabricadoEm, Validade, "Invalid manufacturing date", nameof(FabricadoEm));
+            .ValidManufactureIsOk(FabricadoEm, Validade, "Data de fabricação não pode ser maior que a data de validade", nameof(FabricadoEm));
 
         return contracts.IsValid();
     }

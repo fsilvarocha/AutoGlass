@@ -10,6 +10,7 @@ namespace AutoGlass.Core.Application.Services;
 public sealed class ProductService : IProdutoService
 {
     private readonly IProdutoRepository _repository;
+
     public ProductService(IProdutoRepository repository) => _repository = repository;
 
     public async Task<bool> Add(ProdutoRequest productRequest)
@@ -65,7 +66,6 @@ public sealed class ProductService : IProdutoService
 
         return (ProdutoResponse)getId;
     }
-
 
     public async Task<bool> Update(int productId, ProdutoRequest model)
     {
